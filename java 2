@@ -1,0 +1,38 @@
+// src/App.jsx
+import React from "react";
+import ProductCard from "./components/ProductCard";
+
+export default function App() {
+  const products = [
+    { name: "Wireless Mouse", price: 25.99, inStock: true },
+    { name: "Keyboard", price: 45.5, inStock: false },
+    { name: "Monitor", price: 199.99, inStock: true },
+  ];
+
+  return (
+    <div style={pageStyles.container}>
+      <h1 style={pageStyles.heading}>Products List</h1>
+      <div style={pageStyles.grid}>
+        {products.map((p) => (
+          <ProductCard
+            key={p.name}
+            name={p.name}
+            price={p.price}
+            inStock={p.inStock}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const pageStyles = {
+  container: { padding: 24, fontFamily: "system-ui, Arial, sans-serif" },
+  heading: { textAlign: "center" },
+  grid: {
+    marginTop: 20,
+    display: "grid",
+    gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+    gap: 20,
+  },
+};
